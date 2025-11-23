@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apparel - Arshrozy Printing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <div class="top-bar">
+                <a href="index.html" class="logo">Arshrozy<span>Printing</span></a>
+                <div class="contact-info"><strong>07XX XXX XXX</strong></div>
+            </div>
+            <nav class="main-nav">
+                <ul class="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="marketing.html">Marketing</a></li>
+                    <li><a href="banners.html">Banners</a></li>
+                    <li><a href="stickers.html">Stickers</a></li>
+                    <li><a href="business-cards.html">Cards</a></li>
+                    <li><a href="stationery.html">Stationery</a></li>
+                    <li><a href="mugs.html">Mugs</a></li>
+                    <li><a href="apparel.html" class="active">Apparel</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="section-title">Branded T-Shirts & Apparel</h1>
+        <div class="product-split">
+            <div class="image-side">
+                <img src="https://via.placeholder.com/600x400?text=T-Shirt+Sample" alt="Apparel">
+                <p style="margin-top:20px;">Screen printing, embroidery, and heat transfer for T-shirts, Polo shirts, Hoodies, and Caps.</p>
+            </div>
+            <div class="calc-side">
+                <h3>Get a Price Quote</h3>
+                <form id="apparel-form">
+                    <div class="form-group">
+                        <label>Garment Type</label>
+                        <select id="a-type">
+                            <option value="tshirt">Round Neck T-Shirt</option>
+                            <option value="polo">Polo Shirt</option>
+                            <option value="hoodie">Hoodie</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" id="a-qty" value="10" min="1">
+                    </div>
+                    <div class="total-box">
+                        Total Estimate:
+                        <span id="a-total" class="final-price">KES 0.00</span>
+                    </div>
+                    <button type="button" class="add-cart-btn">ADD TO CART</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

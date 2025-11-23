@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Business Cards - Arshrozy Printing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <div class="top-bar">
+                <a href="index.html" class="logo">Arshrozy<span>Printing</span></a>
+                <div class="contact-info"><strong>07XX XXX XXX</strong></div>
+            </div>
+            <nav class="main-nav">
+                <ul class="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="marketing.html">Marketing</a></li>
+                    <li><a href="banners.html">Banners</a></li>
+                    <li><a href="stickers.html">Stickers</a></li>
+                    <li><a href="business-cards.html" class="active">Cards</a></li>
+                    <li><a href="stationery.html">Stationery</a></li>
+                    <li><a href="mugs.html">Mugs</a></li>
+                    <li><a href="apparel.html">Apparel</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <h1 class="section-title">Business Cards Printing</h1>
+        <div class="product-split">
+            <div class="image-side">
+                <img src="images/business-card-back.PNG" alt="Business Card">
+                <p style="margin-top:20px;">Make a lasting impression with professionally designed business cards. Options include Spot UV, Matte Lamination, and Folded cards.</p>
+            </div>
+            <div class="calc-side">
+                <h3>Get a Price Quote</h3>
+                <form id="card-form">
+                    <div class="form-group">
+                        <label>Card Type</label>
+                        <select id="c-type">
+                            <option value="standard">Standard Artboard (300gsm)</option>
+                            <option value="spotuv">Spot UV (Shiny logo)</option>
+                            <option value="folded">Folded (4 Sided)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Printed Sides</label>
+                        <select id="c-sides">
+                            <option value="single">Single Sided</option>
+                            <option value="double">Double Sided</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" id="c-qty" value="100" min="100">
+                    </div>
+                    <div class="total-box">
+                        Total Estimate:
+                        <span id="c-total" class="final-price">KES 0.00</span>
+                    </div>
+                    <button type="button" class="add-cart-btn">ADD TO CART</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

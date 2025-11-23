@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vinyl Stickers - Arshrozy Printing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <div class="top-bar">
+                <a href="index.html" class="logo">Arshrozy<span>Printing</span></a>
+                <div class="contact-info"><strong>07XX XXX XXX</strong></div>
+            </div>
+            <nav class="main-nav">
+                <ul class="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="marketing.html">Marketing</a></li>
+                    <li><a href="banners.html">Banners</a></li>
+                    <li><a href="stickers.html" class="active">Stickers</a></li>
+                    <li><a href="business-cards.html">Cards</a></li>
+                    <li><a href="stationery.html">Stationery</a></li>
+                    <li><a href="mugs.html">Mugs</a></li>
+                    <li><a href="apparel.html">Apparel</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="section-title">Vinyl Stickers & Branding</h1>
+        <div class="product-split">
+            <div class="image-side">
+                <img src="https://via.placeholder.com/600x400?text=Stickers+Sample" alt="Stickers">
+                <p style="margin-top:20px;">Waterproof vinyl stickers, reflective safety stickers, and car branding magnets. Calculated per meter or per piece.</p>
+            </div>
+            <div class="calc-side">
+                <h3>Get a Price Quote</h3>
+                <form id="sticker-form">
+                    <div class="form-group">
+                        <label>Sticker Type</label>
+                        <select id="s-type">
+                            <option value="vinyl">Standard Vinyl (per meter)</option>
+                            <option value="reflective">Reflective Sticker (per meter)</option>
+                            <option value="magnet">Car Magnet (per piece)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity (Meters or Pieces)</label>
+                        <input type="number" id="s-qty" value="1" min="1">
+                    </div>
+                    <div class="total-box">
+                        Total Estimate:
+                        <span id="s-total" class="final-price">KES 0.00</span>
+                    </div>
+                    <button type="button" class="add-cart-btn">ADD TO CART</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
