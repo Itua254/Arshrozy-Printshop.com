@@ -82,7 +82,7 @@ img { max-width: 100%; display: block; }
 }
 .btn:hover { background: #e6c200; }
 
-/* --- PRODUCT GRIDS --- */
+/* --- PRODUCT GRIDS (Common Styles) --- */
 .section-title { text-align: center; margin: 60px 0 40px; font-size: 2em; position: relative; }
 .section-title::after {
     content: ''; display: block; width: 80px; height: 4px;
@@ -96,10 +96,26 @@ img { max-width: 100%; display: block; }
 .product-card {
     background: white; border: 1px solid #eee; border-radius: 8px;
     overflow: hidden; transition: 0.3s;
+    /* Added flex for consistent card height in the carousel/grid */
+    display: flex; 
+    flex-direction: column;
 }
 .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-.product-card img { width: 100%; height: 200px; object-fit: cover; }
-.card-details { padding: 20px; text-align: center; }
+.product-card img { 
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; 
+    /* Added to ensure image takes full width of card */
+    flex-shrink: 0; 
+}
+.card-details { 
+    padding: 20px; 
+    text-align: center; 
+    flex-grow: 1; /* Allows details to fill vertical space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .card-details h3 { font-size: 1.1em; margin-bottom: 10px; }
 .price-tag {
     display: block; font-size: 1.1em; font-weight: bold;
@@ -110,6 +126,80 @@ img { max-width: 100%; display: block; }
     border-radius: 25px; font-weight: bold; font-size: 0.9em;
 }
 .btn-outline:hover { background: #333; color: white; }
+
+/* --- NEW CAROUSEL STYLES --- */
+.carousel-section { position: relative; padding-bottom: 50px; margin-top: 40px; }
+
+.carousel-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 400px; /* Fixed height for visual consistency */
+}
+
+.carousel-track-container {
+    height: 100%;
+    position: relative;
+    overflow: hidden; /* Hide slides that are off-screen */
+    width: 100%;
+}
+
+.carousel-track {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    position: relative;
+    height: 100%;
+    transition: transform 250ms ease-in;
+    display: flex;
+    gap: 30px; /* Match grid gap */
+}
+
+.carousel-slide {
+    min-width: 280px; /* Fixed width for each card */
+    max-width: 280px;
+    flex-shrink: 0; /* Important: Prevents slides from shrinking */
+}
+
+/* Carousel Arrows (Navigation) */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background 0.2s;
+}
+.carousel-nav:hover { background: #6b0000; }
+.prev-btn { left: -60px; }
+.next-btn { right: -60px; }
+
+/* Carousel Dots (Paging) */
+.carousel-dots-nav {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+.carousel-dot {
+    border: none;
+    width: 12px; height: 12px;
+    background: #ccc;
+    border-radius: 50%;
+    margin: 0 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.carousel-dot.current-slide { 
+    background: var(--primary-color); 
+    transform: scale(1.1);
+}
 
 /* --- PRODUCT PAGE LAYOUT --- */
 .product-split { display: flex; gap: 40px; padding: 50px 0; }
@@ -146,11 +236,69 @@ footer { background: #222; color: #bbb; padding: 60px 0 20px; }
 .footer-col a:hover { color: var(--secondary-color); }
 .bottom-bar { text-align: center; border-top: 1px solid #333; margin-top: 40px; padding-top: 20px; }
 
-/* --- MOBILE --- */
-@media (max-width: 768px) {
+/* --- MOBILE STYLES --- */
+@media (max-width: 768px) {/* --- ADD THIS TO YOUR EXISTING MOBILE MEDIA QUERY --- */
+    
+    /* 1. Show the hamburger button */
+    #mobile-menu-btn {
+        display: block !important; /* Force show */
+        background: none;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        font-size: 1.5em;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+
+    /* 2. Hide the menu by default on mobile */
+    .main-nav {
+        display: none; /* Hidden initially */
+        width: 100%;
+        background-color: var(--bg-light);
+        border-top: 1px solid #ddd;
+        margin-top: 15px;
+    }
+
+    /* 3. Show the menu when the JS adds the 'active' class */
+    .main-nav.active {
+        display: block;
+        animation: slideDown 0.3s ease;
+    }
+
+    /* Animation for smooth opening */
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
     .top-bar { flex-direction: column; gap: 15px; text-align: center; }
     .search-wrap { width: 100%; margin: 10px 0; }
     .product-split { flex-direction: column; }
     .menu { flex-direction: column; align-items: center; }
     .menu li { width: 100%; text-align: center; }
-}
+
+    /* CAROUSEL MOBILE INTERACTION */
+    .carousel-wrapper {
+        height: auto; /* Remove fixed height on mobile */
+        max-width: none;
+    }
+    .carousel-track-container {
+        overflow-x: scroll; /* Enable horizontal scrolling for touch */
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+    .carousel-track {
+        transform: none !important; /* Disable JS transform for scroll */
+        padding: 10px 15px;
+        gap: 15px;
+    }
+    .carousel-slide {
+        min-width: 200px; /* Smaller card size on mobile */
+        max-width: 200px;
+    }
+    /* Hide navigation arrows and dots on mobile when scrolling is enabled */
+    .carousel-nav, .carousel-dots-nav {
+        display: none; 
+    }
+}/* Hide the carousel dots */
+.carousel-dots-nav { display: none !important; }
