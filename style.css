@@ -164,7 +164,8 @@ header {
 }
 
 .hero h1 {
-    font-size: 4.5rem;
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    /* Dynamic scaling */
     margin-bottom: 1.5rem;
     background: linear-gradient(to right, #fff, #94a3b8);
     -webkit-background-clip: text;
@@ -173,7 +174,7 @@ header {
 }
 
 .hero p {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
     color: var(--text-muted);
     margin-bottom: 3rem;
     font-weight: 300;
@@ -237,7 +238,7 @@ header {
 }
 
 .section-title {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     text-align: center;
     margin-bottom: 4rem;
     position: relative;
@@ -245,7 +246,8 @@ header {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    /* Improved for mobile */
     gap: 2.5rem;
 }
 
@@ -321,6 +323,14 @@ header {
     box-shadow: var(--shadow-soft);
     overflow: hidden;
     height: 500px;
+}
+
+@media (max-width: 768px) {
+    .product-image {
+        height: auto;
+        aspect-ratio: 1/1;
+        /* Square on mobile */
+    }
 }
 
 .product-image img {
@@ -521,6 +531,9 @@ footer {
         border-radius: var(--radius-lg);
         border: 1px solid var(--glass-border);
         gap: 1.5rem;
+        z-index: 200;
+        /* Ensure on top */
+        backdrop-filter: blur(15px);
     }
 
     .hero h1 {
@@ -533,10 +546,48 @@ footer {
         gap: 3rem;
     }
 
+    .product-details {
+        padding: 1.5rem;
+        /* More compact on mobile */
+    }
+
     .hero {
         height: auto;
         padding: 6rem 0;
         min-height: auto;
+    }
+
+    /* Make search accessible on mobile */
+    .search-container {
+        display: block;
+        margin-right: 0.5rem;
+    }
+
+    .search-input {
+        width: 40px;
+        /* Collapsed initially on mobile if desired, or wider */
+        padding-left: 10px;
+        padding-right: 0;
+        text-indent: -9999px;
+        /* Hide text if we just want icon, but let's try a small bar */
+    }
+
+    .search-input:focus {
+        width: 180px;
+        text-indent: 0;
+        z-index: 201;
+        position: relative;
+    }
+
+    .search-icon {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .search-input:focus+.search-results {
+        width: 80vw;
+        right: -100px;
+        left: auto;
     }
 }
 
@@ -609,6 +660,15 @@ footer {
     max-height: 80vh;
     display: flex;
     flex-direction: column;
+}
+
+@media (max-width: 480px) {
+    .cart-modal {
+        width: 95%;
+        max-height: 90vh;
+        /* More height on mobile */
+        padding: 1.5rem;
+    }
 }
 
 .cart-header {
